@@ -12,7 +12,7 @@ class MenuExampleInvertedSecondary extends Component {
 
   logout = (() => {
     localStorage.removeItem('token');
-    this.props.history.push('/login')
+    this.props.history.push('/')
   });
 
   render() {

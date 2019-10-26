@@ -156,14 +156,6 @@ function EditListing(props) {
     return (
         <Container style={containerStyle}>
             <Header as='h1'>Edit Listing</Header>
-            {/* {values !== null ? (<Loader
-                type="Puff"
-                color="#FF5A5F"
-                height={100}
-                width={100}
-                timeout={3000}
-
-            />) : */}
             <Form onSubmit={submitForm}>
                 <Form.Group widths='equal' style={formDisplay}>
                     <Form.Field

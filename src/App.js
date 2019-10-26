@@ -15,7 +15,7 @@ function App() {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route path="/login" component={Login} />
+          <Route path="/" component={Login} />
           <Route path="/signup" component={Signup} />
           <PrivateRoute path="/addlisting" component={AddListing} />
           <PrivateRoute path="/editlisting/:id" component={EditListing} />

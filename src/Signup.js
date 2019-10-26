@@ -31,12 +31,12 @@ const DividerExampleVerticalForm = (props) => {
             .post('/auth/register', users)
             .then(res => {
                 alert("You've registered successfully.");
-                props.history.push('/login');
+                props.history.push('/');
             })
     }
 
     const routeLogin = () => {
-        props.history.push('/login');
+        props.history.push('/');
       }
 
     return (
