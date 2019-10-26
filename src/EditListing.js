@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     Button,
     Container,
@@ -8,36 +8,37 @@ import {
     Select,
 } from 'semantic-ui-react'
 import { axiosWithAuth } from './utils/axiosWithAuth';
+import Loader from 'react-loader-spinner'
 
 const options_accomodates = [
-    { key: '1', text: '1', value: '1' },
-    { key: '2', text: '2', value: '2' },
-    { key: '3', text: '3', value: '3' },
-    { key: '4', text: '4', value: '4' },
-    { key: '5', text: '5', value: '5' },
-    { key: '6', text: '6', value: '6' },
-    { key: '7', text: '7', value: '7' },
-    { key: '8', text: '8', value: '8' }
+    { key: '1', text: '1', value: 1 },
+    { key: '2', text: '2', value: 2 },
+    { key: '3', text: '3', value: 3 },
+    { key: '4', text: '4', value: 4 },
+    { key: '5', text: '5', value: 5 },
+    { key: '6', text: '6', value: 6 },
+    { key: '7', text: '7', value: 7 },
+    { key: '8', text: '8', value: 8 }
 ]
 
 const options_bedrooms = [
-    { key: '0', text: '0', value: '0' },
-    { key: '1', text: '1', value: '1' },
-    { key: '2', text: '2', value: '2' },
-    { key: '3', text: '3', value: '3' }
+    { key: '0', text: '0', value: 0 },
+    { key: '1', text: '1', value: 1 },
+    { key: '2', text: '2', value: 2 },
+    { key: '3', text: '3', value: 3 }
 ]
 
 const options_bathrooms = [
-    { key: '1', text: '1', value: '1' },
-    { key: '1.5', text: '1.5', value: '1.5' },
-    { key: '2', text: '2', value: '2' }
+    { key: '1', text: '1', value: 1 },
+    { key: '1.5', text: '1.5', value: 1.5 },
+    { key: '2', text: '2', value: 2 }
 ]
 
 const options_beds = [
-    { key: '1', text: '1', value: '1' },
-    { key: '2', text: '2', value: '2' },
-    { key: '3', text: '3', value: '3' },
-    { key: '4', text: '4', value: '4' }
+    { key: '1', text: '1', value: 1 },
+    { key: '2', text: '2', value: 2 },
+    { key: '3', text: '3', value: 3 },
+    { key: '4', text: '4', value: 4 }
 ]
 
 const options_bed_type = [
@@ -49,13 +50,13 @@ const options_bed_type = [
 ]
 
 const options_minimum_nights = [
-    { key: '1', text: '1', value: '1' },
-    { key: '2', text: '2', value: '2' },
-    { key: '3', text: '3', value: '3' },
-    { key: '4', text: '4', value: '4' },
-    { key: '5', text: '5', value: '5' },
-    { key: '6', text: '6', value: '6' },
-    { key: '7', text: '7', value: '7' }
+    { key: '1', text: '1', value: 1 },
+    { key: '2', text: '2', value: 2 },
+    { key: '3', text: '3', value: 3 },
+    { key: '4', text: '4', value: 4 },
+    { key: '5', text: '5', value: 5 },
+    { key: '6', text: '6', value: 6 },
+    { key: '7', text: '7', value: 7 }
 ]
 
 const options_neighborhood = [
@@ -72,12 +73,12 @@ const options_room_type = [
 ]
 
 const options_instant_bookable = [
-    { key: '1', text: 'Yes', value: '1' },
-    { key: '1.5', text: 'No', value: '0' }
+    { key: '1', text: 'Yes', value: 1 },
+    { key: '1.5', text: 'No', value: 0 }
 ]
 const options_wifi = [
-    { key: '1', text: 'Yes', value: '1' },
-    { key: '1.5', text: 'No', value: '0' }
+    { key: '1', text: 'Yes', value: 1 },
+    { key: '1.5', text: 'No', value: 0 }
 ]
 
 const button = {
@@ -125,13 +126,24 @@ function EditListing(props) {
         setValues({ ...values, [data.name]: data.value })
     }
 
+    useEffect(() => {
+        const id = props.match.params.id;
+
+        axiosWithAuth()
+            .get(`/listings/${id}`)
+            .then(res => {
+                
+                setValues(res.data.listings)
+            })
+            .catch(err => console.log(err));
+    }, [])
+
     const submitForm = event => {
-        const id = localStorage.getItem("id")
+        const id = props.match.params.id;
 
         event.preventDefault();
-        const listings = { ...values, users_id: id };
         axiosWithAuth()
-            .put(`/listings/${id}`, listings)
+            .put(`/listings/${id}`, values)
             .then(res => {
                 setValues(res.data);
             })
@@ -144,6 +156,14 @@ function EditListing(props) {
     return (
         <Container style={containerStyle}>
             <Header as='h1'>Edit Listing</Header>
+            {/* {values !== null ? (<Loader
+                type="Puff"
+                color="#FF5A5F"
+                height={100}
+                width={100}
+                timeout={3000}
+
+            />) : */}
             <Form onSubmit={submitForm}>
                 <Form.Group widths='equal' style={formDisplay}>
                     <Form.Field

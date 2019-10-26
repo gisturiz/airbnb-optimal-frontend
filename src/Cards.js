@@ -58,8 +58,8 @@ function Cards({ listings, updateListing, history }) {
             .catch(error => console.log(error));
     };
 
-    const updateButton = () => {
-        history.push('/editlisting');
+    const updateButton = id => {
+        history.push(`/editlisting/${id}`);
     }
 
     return (
@@ -87,7 +87,7 @@ function Cards({ listings, updateListing, history }) {
                     <Card.Content extra>
                         <Card.Header style={optimalPrice}>Optimal Price ${price}</Card.Header>
                         <a>
-                            <Button content="Update" style={button} onClick={() => updateButton()}/>
+                            <Button content="Update" style={button} onClick={() => updateButton(listings.id)}/>
                             <Button content="Delete" style={button} onClick={() => handleDelete(listings.id)} />
                         </a>
                     </Card.Content>

@@ -11,11 +11,13 @@ const button = {
 
 const cardStyle = {
     margin: '30px',
-    minHeight: '540px'
+    minHeight: '540px',
+    minWidth: '300px'
 }
 
 const dashboard = {
     display: 'flex',
+    flexWrap: 'wrap',
     padding: '0 20px'
 }
 
@@ -43,7 +45,7 @@ const CardExampleCard = (props) => {
                 setListings(res.data)
             })
             .catch(err => console.log(err));
-    }, [])
+    }, [listings])
 
     const addListingRouter = () => {
         props.history.push('/addlisting');
