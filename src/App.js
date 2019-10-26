@@ -16,9 +16,9 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <PrivateRoute path="/addlisting" component={AddListing} />
-          <PrivateRoute path="/editlisting/:id" component={EditListing} />
+          <Route exact path="/signup" component={Signup} />
+          <PrivateRoute exact path="/addlisting" component={AddListing} />
+          <PrivateRoute exact path="/editlisting/:id" component={EditListing} />
           <PrivateRoute exact path="/dashboard/:id" component={Dashboard} />
         </Switch>
       </div>
