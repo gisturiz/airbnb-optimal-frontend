@@ -22,7 +22,7 @@ class MenuExampleInvertedSecondary extends Component {
 
     const borderWidth = {
       borderColor: '#FF5A5F',
-      marginLeft: '30px'
+      padding: '0 30px'
     }
 
     const logo = {

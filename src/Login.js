@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Signup.css'
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
 import { axiosWithAuth } from './utils/axiosWithAuth';
+import './index.css';
 
 const button = {
   background: '#FF5A5F',
@@ -65,7 +66,7 @@ const DividerExampleVerticalForm = (props) => {
         </Grid.Column>
       </Grid>
 
-      <Divider vertical>Or</Divider>
+      <Divider vertical className="divider">Or</Divider>
     </Segment>
   )
 }
