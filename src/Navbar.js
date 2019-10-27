@@ -17,12 +17,12 @@ class MenuExampleInvertedSecondary extends Component {
 
   render() {
     const background = {
-      background: '#FF5A5F'
+      background: '#FF5A5F',
+      width: "100%"
     }
 
     const borderWidth = {
       borderColor: '#FF5A5F',
-      // padding: '0 30px'
     }
 
     const logo = {
@@ -32,12 +32,18 @@ class MenuExampleInvertedSecondary extends Component {
       margin: '0 auto',
       fontSize: '1.5em'
     }
+
+    const navLinks = {
+      padding: "0",
+
+    }
     const { activeItem } = this.state
 
     return (
       <Segment inverted style={background}>
         <Menu inverted pointing secondary style={borderWidth}>
           <Menu.Item
+            style={navLinks}
             name='home'
             active={activeItem === 'home'}
             onClick={this.handleItemClick}
@@ -47,6 +53,7 @@ class MenuExampleInvertedSecondary extends Component {
             name='Airbnb Optimizer'
           />
           <Menu.Item
+            style={navLinks}
             name='logout'
             active={activeItem === 'logout'}
             onClick={this.logout}
