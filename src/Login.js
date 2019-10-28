@@ -53,6 +53,7 @@ const DividerExampleVerticalForm = (props) => {
               iconPosition='left'
               name='password'
               type='password'
+              placeholder='Password'
               onChange={handleChange}
               value={users.password}
             />
