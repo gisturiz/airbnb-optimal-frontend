@@ -26,7 +26,6 @@ const DividerExampleVerticalForm = (props) => {
 
     const register = e => {
         e.preventDefault();
-        console.log(users);
         axiosWithAuth()
             .post('/auth/register', users)
             .then(res => {
