@@ -8,7 +8,6 @@ import {
     Select,
 } from 'semantic-ui-react'
 import { axiosWithAuth } from './utils/axiosWithAuth';
-import Loader from 'react-loader-spinner'
 
 const options_accomodates = [
     { key: '1', text: '1', value: 1 },
@@ -136,7 +135,7 @@ function EditListing(props) {
                 setValues(res.data.listings)
             })
             .catch(err => console.log(err));
-    }, [])
+    })
 
     const submitForm = event => {
         const id = props.match.params.id;
