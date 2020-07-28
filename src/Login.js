@@ -11,8 +11,14 @@ const button = {
 };
 
 const input = {
-  marginTop: "0",
-  height: "25px"
+  margin: "-1rem 0 1rem",
+  textAlign: "left",
+  color: "red",
+  height: "20px"
+};
+
+const field = {
+  margin: "0"
 }
 
 const DividerExampleVerticalForm = (props) => {
@@ -72,6 +78,7 @@ const DividerExampleVerticalForm = (props) => {
         props.history.push(`/dashboard/${res.data.users_id}`);
       })
       .catch((err) => {
+        alert("There's been a problem with your login, please check your details and try again.")
         console.log(err);
       });
   };
@@ -86,6 +93,7 @@ const DividerExampleVerticalForm = (props) => {
         <Grid.Column>
           <Form onSubmit={login}>
             <Form.Input
+              style={field}
               icon="user"
               iconPosition="left"
               name="username"
@@ -94,9 +102,12 @@ const DividerExampleVerticalForm = (props) => {
               value={users.username}
             />
             {errors.username.length > 0 ? (
-              <div style={input} class="ui pointing red basic label">{errors.username}</div>
-            ) : <div style={input}> </div>}
+              <p style={input}>{errors.username}</p>
+            ) : (
+              <p style={input}></p>
+            )}
             <Form.Input
+              style={field}
               icon="lock"
               iconPosition="left"
               name="password"
@@ -105,9 +116,11 @@ const DividerExampleVerticalForm = (props) => {
               onChange={handleChange}
               value={users.password}
             />
-            {errors.password.length > 0 ? (
-              <div style={input} class="ui pointing red basic label">{errors.password}</div>
-            ) : <div style={input}> </div>}
+              {errors.password.length > 0 ? (
+              <p style={input}>{errors.password}</p>
+            ) : (
+              <p style={input}></p>
+            )}
             <Button disabled={buttonDisabled} content="Login" style={button} />
           </Form>
         </Grid.Column>

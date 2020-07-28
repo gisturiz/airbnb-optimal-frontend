@@ -8,7 +8,6 @@ const button = {
 }
 
 const loggedIn = {
-    marginTop: "10px",
     color: "#0000EE",
     cursor: "pointer"
 }
@@ -56,6 +55,7 @@ const DividerExampleVerticalForm = (props) => {
                             iconPosition='left'
                             name='password'
                             type='password'
+                            placeholder='Password   '
                             onChange={handleChange}
                             value={users.password}
                         />
