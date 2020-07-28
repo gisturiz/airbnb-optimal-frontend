@@ -86,10 +86,10 @@ function Cards({ listings, updateListing, history }) {
                     </Card.Content>
                     <Card.Content extra>
                         <Card.Header style={optimalPrice}>Optimal Price ${price}</Card.Header>
-                        <a>
+                        <div>
                             <Button content="Update" style={button} onClick={() => updateButton(listings.id)}/>
                             <Button content="Delete" style={button} onClick={() => handleDelete(listings.id)} />
-                        </a>
+                        </div>
                     </Card.Content>
                 </>
             </Card>
