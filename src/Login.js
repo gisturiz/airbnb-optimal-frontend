@@ -3,7 +3,6 @@ import "./Signup.css";
 import { Button, Divider, Form, Grid, Segment } from "semantic-ui-react";
 import { axiosWithAuth } from "./utils/axiosWithAuth";
 import * as yup from "yup";
-import "./index.css";
 
 const button = {
   background: "#FF5A5F",
