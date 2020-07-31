@@ -46,7 +46,7 @@ const CardExampleCard = (props) => {
                 setListings(res.data)
             })
             .catch(err => console.log(err));
-    }, [])
+    }, [listings])
 
     const addListingRouter = () => {
         props.history.push('/addlisting');
@@ -60,9 +60,9 @@ const CardExampleCard = (props) => {
                     <Card.Header style={addCardCenter}>Add New Listing</Card.Header>
                 </Card.Content>
                 <Card.Content extra>
-                    <a>
+                    <div>
                         <Button content="Add" style={button} onClick={addListingRouter} />
-                    </a>
+                    </div>
                 </Card.Content>
             </Card>
             {listings.map((item, index) => (
