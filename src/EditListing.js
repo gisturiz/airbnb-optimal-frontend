@@ -115,6 +115,8 @@ const initialState = {
 
 function EditListing(props) {
 
+    const id = props.match.params.id;
+
     const [values, setValues] = useState(initialState);
 
     const handleChange = (event) => {
@@ -126,7 +128,6 @@ function EditListing(props) {
     }
 
     useEffect(() => {
-        const id = props.match.params.id;
 
         axiosWithAuth()
             .get(`/listings/${id}`)
@@ -135,10 +136,9 @@ function EditListing(props) {
                 setValues(res.data.listings)
             })
             .catch(err => console.log(err));
-    })
+    }, [id])
 
     const submitForm = event => {
-        const id = props.match.params.id;
 
         event.preventDefault();
         axiosWithAuth()
