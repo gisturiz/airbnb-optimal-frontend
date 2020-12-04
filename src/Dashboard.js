@@ -46,7 +46,7 @@ const CardExampleCard = (props) => {
                 setListings(res.data)
             })
             .catch(err => console.log(err));
-    }, [listings])
+    }, [])
 
     const addListingRouter = () => {
         props.history.push('/addlisting');
